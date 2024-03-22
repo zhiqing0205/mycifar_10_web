@@ -8,7 +8,7 @@
 -->
 <template>
     <div class="about">
-        This is about page.
+        This is my project of Application of deep learning in image classification.
     </div>
 </template>
 

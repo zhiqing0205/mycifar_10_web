@@ -4,7 +4,7 @@
  * @Author: Zhiqing Zhong
  * @Date: 2022-01-31 02:47:52
  * @LastEditors: Zhiqing 1775840762@qq.com
- * @LastEditTime: 2024-03-22 03:26:43
+ * @LastEditTime: 2024-03-22 06:06:20
 -->
 <template>
     <div class="home">
@@ -12,7 +12,7 @@
 	        <el-col :span="10">
 				<el-upload
 					class="upload-demo"
-					style="min-height: 40vh"
+					style="min-height: 39vh"
 					drag
 					:before-upload="beforeImgUpload"
 					action="/api/classify/img/"
@@ -32,7 +32,7 @@
 	        </el-col>
 	        <el-col :span="14" v-if="imgUrl !== ''">
 		       <el-card style="min-height: 50vh" class="result">
-			       <h1>图片预测为 <span>{{result}}</span>，概率为 <span>{{probability}}%</span></h1>
+			       <h1>Predict: <span>{{result}}</span>，Probability: <span>{{probability}}%</span></h1>
 			       <img :src="imgUrl">
 		       </el-card>
             </el-col>
@@ -89,7 +89,7 @@ export default defineComponent({
 				},
 				yAxis: {
 					type: 'value',
-					name: "单位：%",
+					name: "Unit：%",
 				},
 				series: [
 					{
@@ -98,7 +98,7 @@ export default defineComponent({
 						label: {
 							normal: {
 								show: true,
-								formatter: function (params) { //标签内容
+								formatter: function (params) {
 									return params.value + '%'
 								},
 							}
@@ -106,7 +106,7 @@ export default defineComponent({
 					}
 				],
 				title: {
-					text: '预测各类的概率分布'
+					text: 'Probability distributions'
 				},
 				tooltip: {
 					trigger: "axis",
@@ -130,11 +130,11 @@ export default defineComponent({
 			const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 			const isLt2M = file.size / 1024 / 1024 < 5;
 			if (!isJpgOrPng) {
-				ElMessage.error('上传的图片只能是 JPG/PNG 格式!');
+				ElMessage.error('upload picture format should be JPG or PNG!');
 			}
 			
 			if (!isLt2M) {
-				ElMessage.error('上传的图片大小不能超过 5MB!');
+				ElMessage.error('upload picture size can not exceed 5MB!');
 			}
 			
 			return isJpgOrPng && isLt2M;
@@ -191,8 +191,18 @@ span {
 	font-weight: bolder;
 }
 
-.el-upload-dragger {
+.el-upload {
   min-height: 360px !important;
   line-height: 360px !important;
+}
+.el-icon-upload {
+    font-size: 30px;      
+    margin: 4px 0 2px;   
+    height: 300px;
+}
+::v-deep .el-upload .el-upload-dragger {
+    height: 300px !important;
+    padding: 80px;
+    /* line-height: 180px !important; */
 }
 </style>

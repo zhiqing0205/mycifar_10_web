@@ -3,12 +3,12 @@
  * @Version: 2.0
  * @Author: Zhiqing Zhong
  * @Date: 2022-01-31 02:47:52
- * @LastEditors: Zhiqing Zhong
- * @LastEditTime: 2022-02-23 00:34:24
+ * @LastEditors: Zhiqing 1775840762@qq.com
+ * @LastEditTime: 2024-03-22 05:30:19
 -->
 <template>
     <div class="record">
-		<el-table :data="tableData" height="650" style="width: 100%">
+		<el-table :data="tableData" height="85vh" style="width: 100%">
 			<el-table-column prop="image" label="Imgage" width="240">
 				<template #default="scope">
 					<img :src="scope.row.image" style="height: 80px;" />
